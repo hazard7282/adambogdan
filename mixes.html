@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DJ Mixes | Adam Bogdan — Deep Tech & Minimal Groovy House</title>
+<meta name="description" content="Listen to DJ mixes and sets by Adam Bogdan. Deep tech, minimal house, groovy house, and tech house mixes on YouTube and SoundCloud 2026. Miami underground DJ."/>
+<meta name="keywords" content="Adam Bogdan DJ mix, Adam Bogdan mix, Adam Bogdan DJ set, deep tech mix, minimal house mix, tech house mix, Miami DJ mix, underground house mix"/>
+<link rel="canonical" href="https://adambogdan.com/mixes.html"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0C090A;--surface:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.09);
+  --border-h:rgba(255,255,255,0.22);--accent:#c0392b;--text:#f5f3ef;
+  --muted:rgba(245,243,239,0.5);--faint:rgba(245,243,239,0.22);
+  --serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--nav-h:56px}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);background:rgba(12,9,10,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px}
+.nav-logo{font-family:var(--serif);font-size:17px}
+.nav-logo em{font-style:italic}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);padding:7px 16px;border-radius:3px;transition:color .2s,background .2s;font-weight:400}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:rgba(255,255,255,0.06)}
+
+/* ── SOCIAL SIDEBAR ── */
+.social-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:150;display:flex;flex-direction:column;background:var(--accent);border-radius:4px 0 0 4px;overflow:hidden}
+.social-sidebar a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.social-sidebar a:hover{background:rgba(0,0,0,.22)}
+.social-sidebar svg{width:16px;height:16px;fill:#fff}
+
+/* ── PAGE WRAPPER ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:72px 40px;padding-top:calc(var(--nav-h) + 56px)}
+
+/* ── HEADER ── */
+.page-header{margin-bottom:56px;animation:fadeUp .7s .05s both}
+.sec-eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.sec-title{font-family:var(--serif);font-size:clamp(36px,5vw,64px);line-height:.95;letter-spacing:-.025em;margin-bottom:16px}
+.sec-title em{font-style:italic}
+.sec-sub{font-size:14px;color:var(--muted);font-weight:300;line-height:1.7;max-width:520px}
+
+/* ── FILTER TABS ── */
+.filter-row{display:flex;gap:6px;margin-bottom:40px;flex-wrap:wrap;animation:fadeUp .7s .1s both}
+.filter-btn{font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border:1px solid var(--border);border-radius:3px;background:none;color:var(--muted);cursor:pointer;transition:all .2s;font-family:var(--sans)}
+.filter-btn:hover{color:var(--text);border-color:var(--border-h)}
+.filter-btn.active{color:var(--text);border-color:var(--accent);background:rgba(192,57,43,.08)}
+
+/* ── MIXES GRID ── */
+.mixes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+/* ── MIX CARD ── */
+.mix-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface);transition:transform .25s,border-color .25s;animation:fadeUp .6s both}
+.mix-card:hover{transform:translateY(-4px);border-color:var(--border-h)}
+
+.mix-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#111;cursor:pointer}
+.mix-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.7) grayscale(15%);transition:filter .3s,transform .4s}
+.mix-card:hover .mix-thumb img{filter:brightness(.5);transform:scale(1.04)}
+
+.mix-thumb-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.mix-play{width:48px;height:48px;background:rgba(192,57,43,.88);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;flex-shrink:0}
+.mix-card:hover .mix-play{transform:scale(1.12);background:var(--accent)}
+.mix-play::after{content:'';width:0;height:0;border-style:solid;border-width:9px 0 9px 16px;border-color:transparent transparent transparent #fff;margin-left:3px}
+
+.mix-platform-badge{position:absolute;top:10px;left:10px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:2px;font-family:var(--sans);font-weight:500}
+.badge-yt{background:rgba(255,0,0,.85);color:#fff}
+.badge-sc{background:rgba(255,85,0,.85);color:#fff}
+
+.mix-duration{position:absolute;bottom:8px;right:10px;font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.04em;background:rgba(0,0,0,.55);padding:2px 6px;border-radius:2px}
+
+/* ── MIX INFO ── */
+.mix-info{padding:16px 18px 18px}
+.mix-title{font-family:var(--serif);font-size:17px;line-height:1.2;margin-bottom:5px}
+.mix-title em{font-style:italic}
+.mix-meta{font-size:10px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;display:flex;gap:12px;flex-wrap:wrap}
+.mix-meta span{display:flex;align-items:center;gap:5px}
+.mix-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.mix-tag{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);border:1px solid var(--border);border-radius:2px;padding:3px 8px}
+.mix-link{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:5px 11px;transition:all .2s;display:inline-block}
+.mix-link:hover{color:var(--text);border-color:var(--border-h)}
+
+/* ── EMPTY STATE (when you add more) ── */
+.mix-card.add-new{border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;cursor:default;gap:12px;opacity:.35}
+.mix-card.add-new:hover{transform:none;border-color:var(--border)}
+.add-icon{font-size:28px;color:var(--faint)}
+.add-text{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+
+/* ── DIVIDER ── */
+.sec-divider{border:none;border-top:1px solid var(--border);margin:64px 0}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-logo{font-family:var(--serif);font-size:15px}
+.footer-logo em{font-style:italic}
+.footer-copy{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.mixes-grid .mix-card:nth-child(1){animation-delay:.08s}
+.mixes-grid .mix-card:nth-child(2){animation-delay:.14s}
+.mixes-grid .mix-card:nth-child(3){animation-delay:.20s}
+.mixes-grid .mix-card:nth-child(4){animation-delay:.26s}
+.mixes-grid .mix-card:nth-child(5){animation-delay:.32s}
+.mixes-grid .mix-card:nth-child(6){animation-delay:.38s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .mixes-grid{grid-template-columns:1fr 1fr}
+  nav{padding:0 20px}
+  .social-sidebar{display:none}
+  .page-wrap{padding:52px 20px;padding-top:calc(var(--nav-h) + 40px)}
+  footer{padding:24px 20px}
+}
+@media(max-width:540px){
+  .mixes-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Adam <em>Bogdan</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#music">Music</a></li>
+    <li><a href="mixes.html" class="active">Mixes</a></li>
+    <li><a href="index.html#booking">Booking &amp; Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── SOCIAL SIDEBAR ── -->
+<div class="social-sidebar">
+  <a href="https://www.instagram.com/adambogdandj" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" title="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+  <a href="https://www.beatport.com/artist/adam-bogdan/128861" target="_blank" title="Beatport"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v3.277A3.49 3.49 0 0 0 9 13.5C9 15.43 10.57 17 12.5 17S16 15.43 16 13.5c0-1.717-1.24-3.144-2.877-3.441L13 10V7h-2zm1 5c.827 0 1.5.673 1.5 1.5S12.827 15 12 15s-1.5-.673-1.5-1.5S11.173 12 12 12z"/></svg></a>
+  <a href="https://adambogdandj.bandcamp.com" target="_blank" title="Bandcamp"><svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg></a>
+  <a href="https://music.apple.com/search?term=adam+bogdan" target="_blank" title="Apple Music"><svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.93 4.93 0 0 0-.368 1.57c-.05.51-.057 1.02-.06 1.532-.002.35 0 .697 0 1.047V16.5c0 .37.006.743.022 1.112.03.795.124 1.58.49 2.297.28.548.67 1.001 1.154 1.384.635.502 1.366.79 2.15.943.49.095.988.13 1.49.15.35.012.7.016 1.05.016h12c.37 0 .74-.007 1.11-.02.8-.03 1.584-.115 2.303-.48.55-.278 1.002-.67 1.385-1.155.5-.633.79-1.36.943-2.148.1-.5.13-1.003.15-1.507.013-.35.016-.7.016-1.05V6.124zm-6.498 1.557a.706.706 0 0 1-.718.706.706.706 0 0 1-.706-.706v-2.23l-5.6 1.38v5.81c0 .04-.004.082-.01.122a1.8 1.8 0 0 1-1.794 1.644 1.8 1.8 0 0 1-1.8-1.8 1.8 1.8 0 0 1 1.8-1.8c.277 0 .54.066.773.18V5.55a.706.706 0 0 1 .545-.688l6.97-1.717a.706.706 0 0 1 .868.688l-.328 3.848z"/></svg></a>
+  <a href="https://www.youtube.com/@adambogdandj" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+  <a href="https://soundcloud.com/adambogdandj" target="_blank" title="SoundCloud"><svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11L.02 15.503a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.162a.127.127 0 0 0-.12-.175zm2.05-.899c-.017 0-.034.002-.05.006a.173.173 0 0 0-.125.11l-1.285 4.15a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .125-.11l1.285-4.15a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm1.8-.9c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.162a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zM11.5 9c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2 0c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2.5 1.5c-.276 0-.5.224-.5.5v4c0 .276.224.5.5.5s.5-.224.5-.5v-4c0-.276-.224-.5-.5-.5zm2.5-.5c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5s.5-.224.5-.5v-5c0-.276-.224-.5-.5-.5zm2.5 1c-.276 0-.5.224-.5.5v3c0 .276.224.5.5.5s.5-.224.5-.5v-3c0-.276-.224-.5-.5-.5z"/></svg></a>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="sec-eyebrow">Adam Bogdan</div>
+    <h1 class="sec-title">DJ <em>Mixes</em></h1>
+    <p class="sec-sub">Deep tech, minimal house and tech house sets from the studio and the dancefloor. Updated regularly.</p>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterMixes('all', this)">All</button>
+    <button class="filter-btn" onclick="filterMixes('youtube', this)">YouTube</button>
+    <button class="filter-btn" onclick="filterMixes('soundcloud', this)">SoundCloud</button>
+    <button class="filter-btn" onclick="filterMixes('deep-tech', this)">Deep Tech</button>
+    <button class="filter-btn" onclick="filterMixes('minimal', this)">Minimal House</button>
+    <button class="filter-btn" onclick="filterMixes('tech-house', this)">Tech House</button>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       MIXES GRID
+       To add a new mix, copy one .mix-card
+       block and update the values inside.
+  ═══════════════════════════════════════ -->
+  <div class="mixes-grid" id="mixesGrid">
+
+    <!-- ── MIX 1 — YouTube ─────────────────────────────────────────────────
+         HOW TO ADD A YOUTUBE MIX:
+         1. thumbnail: https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg
+            replace VIDEO_ID with the ID from your YouTube URL
+            e.g. youtube.com/watch?v=xab-uy6L4WM → VIDEO_ID = xab-uy6L4WM
+         2. href: full YouTube URL
+         3. Update title, date, duration, tags
+    ──────────────────────────────────────────────────────────────────────── -->
+    <div class="mix-card" data-platform="youtube" data-tags="deep-tech minimal">
+      <div class="mix-thumb">
+        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+          <img src="https://img.youtube.com/vi/xab-uy6L4WM/maxresdefault.jpg" alt="Adam Bogdan Live Set YouTube" loading="lazy">
+          <div class="mix-thumb-overlay">
+            <div class="mix-play"></div>
+          </div>
+          <span class="mix-platform-badge badge-yt">YouTube</span>
+        </a>
+      </div>
+      <div class="mix-info">
+        <div class="mix-title"><em>Live Set</em> — Ritmica Studios Miami</div>
+        <div class="mix-meta">
+          <span>2025</span>
+          <span>Minimal · Deep Tech 2026 · Rominimal</span>
+        </div>
+        <div class="mix-tags">
+          <span class="mix-tag">Deep Tech</span>
+          <span class="mix-tag">Minimal House</span>
+          <span class="mix-tag">Live</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" class="mix-link">Watch on YouTube →</a>
+      </div>
+    </div>
+
+    <!-- ── MIX 2 — SoundCloud ──────────────────────────────────────────────
+         HOW TO ADD A SOUNDCLOUD MIX:
+         1. For thumbnail, use your own photo (see img src below) or
+            get the artwork URL from SoundCloud's share embed code
+         2. href: full SoundCloud URL
+         3. Update title, date, duration, tags
+    ──────────────────────────────────────────────────────────────────────── -->
+    <div class="mix-card" data-platform="soundcloud" data-tags="tech-house minimal">
+      <div class="mix-thumb">
+       <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2283757004&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/adambogdandj" title="Adam Bogdan" target="_blank" style="color: #cccccc; text-decoration: none;">Adam Bogdan</a> · <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" title="Adam Bogdan mix— Miami Heat | Deep Tech Dance Floor Minimal Groove| MMW 2026" target="_blank" style="color: #cccccc; text-decoration: none;">Adam Bogdan mix— Miami Heat | Deep Tech Dance Floor Minimal Groove| MMW 2026</a></div>
+         
+          <div class="mix-thumb-overlay">
+            <div class="mix-play"></div>
+          </div>
+          <span class="mix-platform-badge badge-sc">SoundCloud</span>
+        </a>
+      </div>
+      <div class="mix-info">
+        <div class="mix-title">Miami <em>Heat</em> Mix</div>
+        <div class="mix-meta">
+          <span>2025</span>
+          <span>Tech House · Deep Tech 2026</span>
+        </div>
+        <div class="mix-tags">
+          <span class="mix-tag">Tech House</span>
+          <span class="mix-tag">Groove house</span>
+          <span class="mix-tag">Miami</span>
+        </div>
+        <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" target="_blank" class="mix-link">Listen on SoundCloud →</a>
+      </div>
+    </div>
+
+ <div class="mix-card" data-platform="youtube" data-tags="deep-tech minimal">
+      <div class="mix-thumb">
+        <a href="https://www.youtube.com/watch?v=h51G2ivUbJk" target="_blank" rel="noopener" aria-label="Watch on YouTube">
+          <img src="https://img.youtube.com/vi/h51G2ivUbJk/maxresdefault.jpg" alt="Adam Bogdan Live Set YouTube" loading="lazy">
+          <div class="mix-thumb-overlay">
+            <div class="mix-play"></div>
+          </div>
+          <span class="mix-platform-badge badge-yt">YouTube</span>
+        </a>
+      </div>
+      <div class="mix-info">
+        <div class="mix-title"><em>Live Set</em> — Jolt Radio Wynwood Miami</div>
+        <div class="mix-meta">
+          <span>2025</span>
+          <span>Minimal · Deep Tech 2026 · Rominimal</span>
+        </div>
+        <div class="mix-tags">
+          <span class="mix-tag">Deep Tech</span>
+          <span class="mix-tag">Minimal House</span>
+          <span class="mix-tag">Live</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" class="mix-link">Watch on YouTube →</a>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- /mixes-grid -->
+
+  <div style="border-top:1px solid var(--border);margin-top:64px;padding-top:40px;">
+    <div class="sec-eyebrow" style="margin-bottom:12px;">More Music</div>
+    <p style="font-size:14px;color:var(--muted);font-weight:300;margin-bottom:20px;line-height:1.7;">Full back catalogue of mixes and DJ sets available on SoundCloud and YouTube.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="https://soundcloud.com/adambogdandj" target="_blank" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);border:1px solid var(--border);border-radius:3px;padding:10px 20px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)'">SoundCloud →</a>
+      <a href="https://www.youtube.com/@adambogdandj" target="_blank" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);border:1px solid var(--border);border-radius:3px;padding:10px 20px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)'">YouTube →</a>
+    </div>
+  </div>
+
+</div>
+<!-- /page-wrap -->
+
+<footer>
+  <a href="index.html" class="footer-logo">Adam <em>Bogdan</em></a>
+  <div class="footer-copy">© 2026 Adam Bogdan · Miami, FL</div>
+</footer>
+
+<script>
+// ── FILTER ───────────────────────────────────────────────────────────────────
+function filterMixes(filter, btn) {
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+
+  // Show/hide cards
+  document.querySelectorAll('#mixesGrid .mix-card:not(.add-new)').forEach(function(card) {
+    if (filter === 'all') {
+      card.style.display = '';
+    } else {
+      var platform = card.dataset.platform || '';
+      var tags = card.dataset.tags || '';
+      var match = platform === filter || tags.indexOf(filter) !== -1;
+      card.style.display = match ? '' : 'none';
+    }
+  });
+}
+
+// ── HOW TO ADD A NEW MIX ─────────────────────────────────────────────────────
+// Copy the block below and paste it before the closing </div> of #mixesGrid
+// Replace the values and delete this comment when done.
+//
+// YOUTUBE mix template:
+// <div class="mix-card" data-platform="youtube" data-tags="deep-tech minimal">
+//   <div class="mix-thumb">
+//     <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">
+//       <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="Mix title">
+//       <div class="mix-thumb-overlay"><div class="mix-play"></div></div>
+//       <span class="mix-platform-badge badge-yt">YouTube</span>
+//     </a>
+//   </div>
+//   <div class="mix-info">
+//     <div class="mix-title">Mix <em>Title Here</em></div>
+//     <div class="mix-meta"><span>2026</span><span>Genre</span></div>
+//     <div class="mix-tags"><span class="mix-tag">Tag</span></div>
+//     <a href="FULL_URL" target="_blank" class="mix-link">Watch on YouTube →</a>
+//   </div>
+// </div>
+//
+// SOUNDCLOUD mix template:
+// <div class="mix-card" data-platform="soundcloud" data-tags="tech-house">
+//   <div class="mix-thumb">
+//     <a href="https://soundcloud.com/adambogdandj/TRACK-SLUG" target="_blank">
+//       <img src="YOUR_THUMBNAIL_URL_OR_PHOTO.jpg" alt="Mix title">
+//       <div class="mix-thumb-overlay"><div class="mix-play"></div></div>
+//       <span class="mix-platform-badge badge-sc">SoundCloud</span>
+//     </a>
+//   </div>
+//   <div class="mix-info">
+//     <div class="mix-title">Mix <em>Title Here</em></div>
+//     <div class="mix-meta"><span>2026</span><span>Genre</span></div>
+//     <div class="mix-tags"><span class="mix-tag">Tag</span></div>
+//     <a href="FULL_URL" target="_blank" class="mix-link">Listen on SoundCloud →</a>
+//   </div>
+// </div>
+</script>
+
+</body>
+</html>
